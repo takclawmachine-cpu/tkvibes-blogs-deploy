@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>
+<title>TKVibes Blog</title>
+<link>https://blogs.tkvibes.in/</link>
+<description>Practical guides to self-hosting n8n, running AI coding agents on a VPS, and automating real work. Real commands, real costs, real errors.</description>
+<language>en</language>
+<lastBuildDate>Tue, 01 Sep 2026 10:51:21 +0000</lastBuildDate>
+<atom:link href="https://blogs.tkvibes.in/feed.xml" rel="self" type="application/rss+xml"/>
+<item>
+<title>The Cheapest Way to Self-Host n8n in 2026 (Real Costs)</title>
+<link>https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/</link>
+<guid isPermaLink="true">https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/</guid>
+<description>n8n Cloud starts at $24/month. Self-hosting on a VPS costs about $7. Here is the real cost breakdown, the setup, and when self-hosting is actually not worth it.</description>
+</item>
+</channel></rss>

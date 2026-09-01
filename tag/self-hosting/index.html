@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>self-hosting — TKVibes Blog</title>
+<meta name="description" content="Guides and tutorials about self-hosting.">
+<link rel="canonical" href="https://blogs.tkvibes.in/tag/self-hosting/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta property="og:type" content="website">
+<meta property="og:title" content="self-hosting — TKVibes Blog">
+<meta property="og:description" content="Guides and tutorials about self-hosting.">
+<meta property="og:url" content="https://blogs.tkvibes.in/tag/self-hosting/">
+<meta property="og:site_name" content="TKVibes Blog">
+<meta property="og:locale" content="en_US">
+
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="self-hosting — TKVibes Blog">
+<meta name="twitter:description" content="Guides and tutorials about self-hosting.">
+<meta name="author" content="Taarush Kane">
+<link rel="alternate" type="application/rss+xml" title="TKVibes Blog" href="https://blogs.tkvibes.in/feed.xml">
+<style>/* TKVibes Blog — critical CSS, inlined at build time.
+   No external font requests (system stack = zero LCP cost, zero CLS). */
+
+:root {
+  --bg: #0b0d12;
+  --bg-soft: #12151d;
+  --bg-code: #161a24;
+  --border: #232838;
+  --text: #e6e8ee;
+  --text-dim: #9aa2b5;
+  --accent: #818cf8;
+  --accent-dim: #6366f1;
+  --warn: #f59e0b;
+  --tip: #10b981;
+  --max: 720px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 17px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+/* ---- header ---- */
+.site-head {
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+  margin-bottom: 40px;
+}
+.site-head .wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: 18px; color: var(--text); }
+.brand span { color: var(--accent); }
+.site-nav { display: flex; gap: 18px; margin-left: auto; font-size: 15px; }
+.site-nav a { color: var(--text-dim); }
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+
+/* ---- article ---- */
+article { padding-bottom: 60px; }
+
+h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+h2 {
+  font-size: clamp(22px, 3.5vw, 28px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 48px 0 16px;
+  padding-top: 8px;
+  scroll-margin-top: 20px;
+}
+h3 {
+  font-size: 20px;
+  margin: 32px 0 12px;
+  scroll-margin-top: 20px;
+}
+h4 { font-size: 17px; margin: 24px 0 8px; color: var(--text-dim); }
+
+p { margin: 0 0 20px; }
+
+.meta {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin-bottom: 28px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.meta time { white-space: nowrap; }
+
+/* The direct-answer block: what AI engines extract. */
+.answer {
+  background: linear-gradient(135deg, rgba(99,102,241,.13), rgba(99,102,241,.05));
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin: 0 0 32px;
+  font-size: 17px;
+}
+.answer p:last-child { margin-bottom: 0; }
+.answer strong { color: #fff; }
+
+ul, ol { margin: 0 0 20px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+/* ---- code ---- */
+code {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
+  font-size: .87em;
+  color: #c7d2fe;
+}
+pre {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+pre code { background: none; border: 0; padding: 0; color: #d8dee9; font-size: inherit; }
+
+/* ---- tables ---- */
+.table-wrap { overflow-x: auto; margin: 0 0 24px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--border); padding: 9px 12px; text-align: left; }
+th { background: var(--bg-soft); font-weight: 600; }
+tbody tr:nth-child(even) { background: rgba(255,255,255,.015); }
+
+/* ---- callouts ---- */
+blockquote {
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--text-dim);
+  background: var(--bg-soft);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-dim);
+}
+blockquote p { margin: 0; }
+blockquote.warn { border-left-color: var(--warn); }
+blockquote.tip  { border-left-color: var(--tip); }
+
+hr { border: 0; border-top: 1px solid var(--border); margin: 40px 0; }
+
+img { max-width: 100%; height: auto; border-radius: 8px; display: block; }
+
+/* ---- TOC ---- */
+.toc {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 0 0 36px;
+  font-size: 15px;
+}
+.toc-title {
+  font-weight: 600; font-size: 13px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px;
+}
+.toc ol { margin: 0; padding-left: 20px; }
+.toc li { margin-bottom: 5px; }
+.toc a { color: var(--text-dim); }
+.toc a:hover { color: var(--accent); }
+
+/* ---- CTA ---- */
+.cta {
+  background: linear-gradient(135deg, rgba(99,102,241,.16), rgba(99,102,241,.06));
+  border: 1px solid rgba(99,102,241,.3);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 36px 0;
+}
+.cta h4 { margin: 0 0 8px; color: var(--text); font-size: 17px; }
+.cta p { margin: 0 0 14px; font-size: 15px; color: var(--text-dim); }
+.btn {
+  display: inline-block;
+  background: var(--accent-dim);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.btn:hover { background: var(--accent); text-decoration: none; }
+
+.disclosure {
+  font-size: 13px;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-top: 36px;
+  line-height: 1.6;
+}
+
+/* ---- author box: E-E-A-T signal ---- */
+.author-box {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 36px 0;
+}
+.author-box .who { font-weight: 600; margin-bottom: 4px; }
+.author-box p { margin: 0; font-size: 14px; color: var(--text-dim); }
+
+/* ---- index list ---- */
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 22px 0;
+  margin: 0;
+}
+.post-list li:last-child { border-bottom: 0; }
+.post-list h2 { font-size: 21px; margin: 0 0 6px; }
+.post-list h2 a { color: var(--text); }
+.post-list h2 a:hover { color: var(--accent); text-decoration: none; }
+.post-list p { margin: 0 0 8px; color: var(--text-dim); font-size: 15px; }
+.post-list .meta { margin: 0; font-size: 13px; }
+
+.hero { padding: 10px 0 30px; }
+.hero h1 { margin-bottom: 12px; }
+.hero p { color: var(--text-dim); font-size: 18px; margin: 0; }
+
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+a.tag:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+.site-foot {
+  border-top: 1px solid var(--border);
+  padding: 28px 0 50px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+.site-foot a { color: var(--text-dim); }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .site-nav { gap: 14px; font-size: 14px; }
+  h2 { margin-top: 36px; }
+}
+</style>
+
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="/">TK<span>Vibes</span> Blog</a>
+  <nav class="site-nav"><a href="/">Home</a><a href="/tag/n8n/">n8n</a><a href="/tag/ai-agents/">AI Agents</a><a href="/tag/vps/">VPS</a></nav>
+</div></header>
+<main class="wrap">
+<div class="hero"><h1>self-hosting</h1><p>Guides and tutorials about self-hosting.</p></div><ul class="post-list"><li><h2><a href="/cheapest-way-to-self-host-n8n/">The Cheapest Way to Self-Host n8n in 2026 (Real Costs)</a></h2><p>n8n Cloud starts at $24/month. Self-hosting on a VPS costs about $7. Here is the real cost breakdown, the setup, and when self-hosting is actually not worth it.</p><div class="meta"><time datetime="2026-09-01">2026-09-01</time></div></li></ul></main>
+<footer class="site-foot"><div class="wrap">
+  <p>TKVibes Blog — by <a href="https://tkvibes.in">Taarush Kane</a>.
+  <a href="/feed.xml">RSS</a></p>
+  <p style="font-size:13px">Some links on this page are affiliate links. If you buy through them I earn a commission at no extra cost to you. I pay for the services I write about and only recommend what I actually use.</p>
+</div></footer>
+</body>
+</html>

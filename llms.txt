@@ -1,0 +1,13 @@
+# TKVibes Blog
+
+> Practical guides to self-hosting n8n, running AI coding agents on a VPS, and automating real work. Real commands, real costs, real errors.
+
+Author: Taarush Kane — I run TKVibes, a digital agency. I self-host the automation stack that runs it — n8n, AI agents, and a pile of Docker containers. These are my notes.
+
+## Articles
+
+- [The Cheapest Way to Self-Host n8n in 2026 (Real Costs)](https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/): n8n Cloud starts at $24/month. Self-hosting on a VPS costs about $7. Here is the real cost breakdown, the setup, and when self-hosting is actually not worth it.
+
+## Note
+
+Content includes affiliate links to hosting providers the author pays for and uses.

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Cheapest Way to Self-Host n8n in 2026 (Real Costs)</title>
+<meta name="description" content="n8n Cloud starts at $24/month. Self-hosting on a VPS costs about $7. Here is the real cost breakdown, the setup, and when self-hosting is actually not worth it.">
+<link rel="canonical" href="https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Cheapest Way to Self-Host n8n in 2026 (Real Costs)">
+<meta property="og:description" content="n8n Cloud starts at $24/month. Self-hosting on a VPS costs about $7. Here is the real cost breakdown, the setup, and when self-hosting is actually not worth it.">
+<meta property="og:url" content="https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/">
+<meta property="og:site_name" content="TKVibes Blog">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-09-01">
+<meta property="article:modified_time" content="2026-09-01">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Cheapest Way to Self-Host n8n in 2026 (Real Costs)">
+<meta name="twitter:description" content="n8n Cloud starts at $24/month. Self-hosting on a VPS costs about $7. Here is the real cost breakdown, the setup, and when self-hosting is actually not worth it.">
+<meta name="author" content="Taarush Kane">
+<link rel="alternate" type="application/rss+xml" title="TKVibes Blog" href="https://blogs.tkvibes.in/feed.xml">
+<style>/* TKVibes Blog — critical CSS, inlined at build time.
+   No external font requests (system stack = zero LCP cost, zero CLS). */
+
+:root {
+  --bg: #0b0d12;
+  --bg-soft: #12151d;
+  --bg-code: #161a24;
+  --border: #232838;
+  --text: #e6e8ee;
+  --text-dim: #9aa2b5;
+  --accent: #818cf8;
+  --accent-dim: #6366f1;
+  --warn: #f59e0b;
+  --tip: #10b981;
+  --max: 720px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 17px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+/* ---- header ---- */
+.site-head {
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+  margin-bottom: 40px;
+}
+.site-head .wrap { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.brand { font-weight: 700; font-size: 18px; color: var(--text); }
+.brand span { color: var(--accent); }
+.site-nav { display: flex; gap: 18px; margin-left: auto; font-size: 15px; }
+.site-nav a { color: var(--text-dim); }
+.site-nav a:hover { color: var(--text); text-decoration: none; }
+
+/* ---- article ---- */
+article { padding-bottom: 60px; }
+
+h1 {
+  font-size: clamp(28px, 5vw, 40px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+h2 {
+  font-size: clamp(22px, 3.5vw, 28px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 48px 0 16px;
+  padding-top: 8px;
+  scroll-margin-top: 20px;
+}
+h3 {
+  font-size: 20px;
+  margin: 32px 0 12px;
+  scroll-margin-top: 20px;
+}
+h4 { font-size: 17px; margin: 24px 0 8px; color: var(--text-dim); }
+
+p { margin: 0 0 20px; }
+
+.meta {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin-bottom: 28px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.meta time { white-space: nowrap; }
+
+/* The direct-answer block: what AI engines extract. */
+.answer {
+  background: linear-gradient(135deg, rgba(99,102,241,.13), rgba(99,102,241,.05));
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin: 0 0 32px;
+  font-size: 17px;
+}
+.answer p:last-child { margin-bottom: 0; }
+.answer strong { color: #fff; }
+
+ul, ol { margin: 0 0 20px; padding-left: 24px; }
+li { margin-bottom: 8px; }
+
+/* ---- code ---- */
+code {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
+  font-size: .87em;
+  color: #c7d2fe;
+}
+pre {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  margin: 0 0 24px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+pre code { background: none; border: 0; padding: 0; color: #d8dee9; font-size: inherit; }
+
+/* ---- tables ---- */
+.table-wrap { overflow-x: auto; margin: 0 0 24px; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; }
+th, td { border: 1px solid var(--border); padding: 9px 12px; text-align: left; }
+th { background: var(--bg-soft); font-weight: 600; }
+tbody tr:nth-child(even) { background: rgba(255,255,255,.015); }
+
+/* ---- callouts ---- */
+blockquote {
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  border-left: 3px solid var(--text-dim);
+  background: var(--bg-soft);
+  border-radius: 0 8px 8px 0;
+  color: var(--text-dim);
+}
+blockquote p { margin: 0; }
+blockquote.warn { border-left-color: var(--warn); }
+blockquote.tip  { border-left-color: var(--tip); }
+
+hr { border: 0; border-top: 1px solid var(--border); margin: 40px 0; }
+
+img { max-width: 100%; height: auto; border-radius: 8px; display: block; }
+
+/* ---- TOC ---- */
+.toc {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin: 0 0 36px;
+  font-size: 15px;
+}
+.toc-title {
+  font-weight: 600; font-size: 13px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--text-dim); margin-bottom: 10px;
+}
+.toc ol { margin: 0; padding-left: 20px; }
+.toc li { margin-bottom: 5px; }
+.toc a { color: var(--text-dim); }
+.toc a:hover { color: var(--accent); }
+
+/* ---- CTA ---- */
+.cta {
+  background: linear-gradient(135deg, rgba(99,102,241,.16), rgba(99,102,241,.06));
+  border: 1px solid rgba(99,102,241,.3);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin: 36px 0;
+}
+.cta h4 { margin: 0 0 8px; color: var(--text); font-size: 17px; }
+.cta p { margin: 0 0 14px; font-size: 15px; color: var(--text-dim); }
+.btn {
+  display: inline-block;
+  background: var(--accent-dim);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+}
+.btn:hover { background: var(--accent); text-decoration: none; }
+
+.disclosure {
+  font-size: 13px;
+  color: var(--text-dim);
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+  margin-top: 36px;
+  line-height: 1.6;
+}
+
+/* ---- author box: E-E-A-T signal ---- */
+.author-box {
+  display: flex; gap: 16px; align-items: flex-start;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 36px 0;
+}
+.author-box .who { font-weight: 600; margin-bottom: 4px; }
+.author-box p { margin: 0; font-size: 14px; color: var(--text-dim); }
+
+/* ---- index list ---- */
+.post-list { list-style: none; padding: 0; margin: 0; }
+.post-list li {
+  border-bottom: 1px solid var(--border);
+  padding: 22px 0;
+  margin: 0;
+}
+.post-list li:last-child { border-bottom: 0; }
+.post-list h2 { font-size: 21px; margin: 0 0 6px; }
+.post-list h2 a { color: var(--text); }
+.post-list h2 a:hover { color: var(--accent); text-decoration: none; }
+.post-list p { margin: 0 0 8px; color: var(--text-dim); font-size: 15px; }
+.post-list .meta { margin: 0; font-size: 13px; }
+
+.hero { padding: 10px 0 30px; }
+.hero h1 { margin-bottom: 12px; }
+.hero p { color: var(--text-dim); font-size: 18px; margin: 0; }
+
+.tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.tag {
+  font-size: 12px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+a.tag:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+
+.site-foot {
+  border-top: 1px solid var(--border);
+  padding: 28px 0 50px;
+  color: var(--text-dim);
+  font-size: 14px;
+}
+.site-foot a { color: var(--text-dim); }
+
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  .site-nav { gap: 14px; font-size: 14px; }
+  h2 { margin-top: 36px; }
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "TechArticle", "@id": "https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/#article", "headline": "The Cheapest Way to Self-Host n8n in 2026 (Real Costs)", "description": "n8n Cloud starts at $24/month. Self-hosting on a VPS costs about $7. Here is the real cost breakdown, the setup, and when self-hosting is actually not worth it.", "datePublished": "2026-09-01", "dateModified": "2026-09-01", "author": {"@type": "Person", "name": "Taarush Kane", "url": "https://tkvibes.in"}, "publisher": {"@type": "Organization", "name": "TKVibes Blog", "url": "https://blogs.tkvibes.in"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/"}, "inLanguage": "en", "keywords": "cheapest way to self host n8n, self host n8n cost, n8n vps hosting, how much does self hosted n8n cost, n8n self hosted vs cloud"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://blogs.tkvibes.in/"}, {"@type": "ListItem", "position": 2, "name": "The Cheapest Way to Self-Host n8n in 2026 (Real Costs)", "item": "https://blogs.tkvibes.in/cheapest-way-to-self-host-n8n/"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does self-hosted n8n cost per month?", "acceptedAnswer": {"@type": "Answer", "text": "Around $7-13/month for a VPS with 4-8GB RAM, which is enough for most setups. The n8n software itself is free under the Sustainable Use License. Your only other likely cost is a domain, roughly $10-15/year."}}, {"@type": "Question", "name": "Is self-hosting n8n free?", "acceptedAnswer": {"@type": "Answer", "text": "The software is free, the hosting is not. You can get to genuinely $0 using Oracle Cloud's free tier or a Raspberry Pi you already own, but both trade reliability for cost. Realistically, budget $7-13/month."}}, {"@type": "Question", "name": "How much RAM does n8n need?", "acceptedAnswer": {"@type": "Answer", "text": "4GB is the practical minimum for a real setup running n8n plus PostgreSQL. n8n's docs mention 512MB, but that only covers an idle instance. Workflows that handle large payloads will exceed it and get killed by the OOM killer."}}, {"@type": "Question", "name": "Should I use SQLite or PostgreSQL for n8n?", "acceptedAnswer": {"@type": "Answer", "text": "PostgreSQL. SQLite is the default and works for light use, but it is prone to corruption under concurrent workflow executions and handles large execution tables poorly. Postgres is one extra container and removes an entire category of problem."}}, {"@type": "Question", "name": "Can I run n8n without Docker?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, via npm (npm install n8n -g), but you then manage Node versions, process supervision, and dependency conflicts yourself. Docker is less work and makes upgrades a single command."}}, {"@type": "Question", "name": "Is self-hosted n8n slower than n8n Cloud?", "acceptedAnswer": {"@type": "Answer", "text": "No, usually the opposite — a dedicated VPS is not shared with other tenants. What you lose is n8n Cloud's managed scaling and their handling of very high webhook concurrency, which most self-hosted users never approach."}}]}]}</script>
+</head>
+<body>
+<header class="site-head"><div class="wrap">
+  <a class="brand" href="/">TK<span>Vibes</span> Blog</a>
+  <nav class="site-nav"><a href="/">Home</a><a href="/tag/n8n/">n8n</a><a href="/tag/ai-agents/">AI Agents</a><a href="/tag/vps/">VPS</a></nav>
+</div></header>
+<main class="wrap">
+<article>
+<h1>The Cheapest Way to Self-Host n8n in 2026 (Real Costs)</h1>
+<div class="meta"><time datetime="2026-09-01">2026-09-01</time><span>9 min read</span></div>
+<div class="tags"><a class="tag" href="/tag/n8n/">n8n</a><a class="tag" href="/tag/vps/">VPS</a><a class="tag" href="/tag/self-hosting/">self-hosting</a></div>
+<div class="answer"><p>The cheapest reliable way to self-host n8n is a small VPS with 4-8GB RAM, which costs roughly $7-13/month (about Rs.600-1,100). That is 3-4x cheaper than n8n Cloud&#x27;s $24/month Starter plan, and it removes the 5-workflow limit entirely. Free options exist (Oracle Cloud free tier, a Raspberry Pi at home) but they trade money for reliability, and for anything running real automations that trade is usually a bad one.</p></div><nav class="toc"><div class="toc-title">Contents</div><ol><li><a href="#the-short-answer">The short answer</a></li><li><a href="#how-much-ram-does-n8n-actually-need">How much RAM does n8n actually need?</a></li><li><a href="#the-database-decision-that-costs-people-their-data">The database decision that costs people their data</a></li><li><a href="#setup">Setup</a></li><li><a href="#the-backup-nobody-sets-up-until-it-is-too-late">The backup nobody sets up until it is too late</a></li><li><a href="#what-about-the-free-options">What about the free options?</a></li><li><a href="#when-self-hosting-is-the-wrong-choice">When self-hosting is the wrong choice</a></li><li><a href="#faq">FAQ</a></li></ol></nav><p>If you have hit n8n Cloud's 5-active-workflow limit, you have probably already done the maths and realised the upgrade is steep. The Starter plan is $24/month. Pro is $60. For a lot of people that is more than the rest of their stack costs combined.</p>
+<p>Self-hosting n8n is genuinely cheap. But most guides skip the parts that cost you money later: the RAM you actually need, the database decision, and the backup you will wish you had set up. This covers the real numbers.</p>
+<h2 id="the-short-answer">The short answer</h2>
+<p>A VPS with <strong>4-8GB RAM at roughly $7-13/month</strong> is the sweet spot. Anything smaller and you will hit memory limits the first time a workflow processes a large payload. Anything bigger is money you do not need to spend yet.</p>
+<div class="table-wrap"><table><thead><tr><th>Option</th><th>Monthly</th><th>Yearly</th><th>Active workflows</th><th>Your data</th></tr></thead><tbody><tr><td>n8n Cloud Starter</td><td>$24</td><td>$288</td><td>5</td><td>Their servers</td></tr><tr><td>n8n Cloud Pro</td><td>$60</td><td>$720</td><td>15</td><td>Their servers</td></tr><tr><td><strong>VPS (4GB)</strong></td><td><strong>~$7</strong></td><td><strong>~$84</strong></td><td><strong>Unlimited</strong></td><td><strong>Yours</strong></td></tr><tr><td><strong>VPS (8GB)</strong></td><td><strong>~$13</strong></td><td><strong>~$156</strong></td><td><strong>Unlimited</strong></td><td><strong>Yours</strong></td></tr><tr><td>Oracle Cloud free tier</td><td>$0</td><td>$0</td><td>Unlimited</td><td>Yours</td></tr><tr><td>Raspberry Pi (own hardware)</td><td>~$0</td><td>~$0</td><td>Unlimited</td><td>Yours</td></tr></tbody></table></div>
+<p>The yearly numbers are what matter. <strong>Self-hosting saves roughly $200/year against Starter and $560/year against Pro.</strong></p>
+<blockquote class="note"><p>Prices change. Check n8n's pricing page and your provider's page before you commit — I have kept these current as of the updated date on this article.</p></blockquote>
+<h2 id="how-much-ram-does-n8n-actually-need">How much RAM does n8n actually need?</h2>
+<p>This is the question that decides your bill, and most guides answer it badly.</p>
+<p>n8n's own docs suggest a minimum of 512MB. That number is technically true and practically useless. It describes n8n sitting idle doing nothing.</p>
+<p>Here is what actually happens:</p>
+<div class="table-wrap"><table><thead><tr><th>RAM</th><th>What works</th><th>What breaks</th></tr></thead><tbody><tr><td>1GB</td><td>n8n starts, simple webhooks run</td><td>Dies on any workflow handling a large HTTP response or file</td></tr><tr><td>2GB</td><td>Light workflows, a few nodes</td><td>Struggles once you add Postgres in the same box</td></tr><tr><td><strong>4GB</strong></td><td><strong>Most real setups: n8n + Postgres + a couple of other containers</strong></td><td>Heavy data transforms, big batches</td></tr><tr><td>8GB</td><td>Comfortable, room for other services</td><td>—</td></tr></tbody></table></div>
+<p>The reason is that n8n holds workflow execution data in memory. A workflow that fetches a 50MB JSON response and runs it through a few transform nodes can spike well past what the container idles at. When it exceeds available memory, the Node process is killed and your execution just... vanishes.</p>
+<p><strong>Practical recommendation: start at 4GB.</strong> If you are running Postgres in the same box (you should — more on that below) and want headroom, 8GB.</p>
+<h2 id="the-database-decision-that-costs-people-their-data">The database decision that costs people their data</h2>
+<p>n8n defaults to <strong>SQLite</strong>. It works. It is also the single most common cause of "I lost all my workflow history" posts.</p>
+<p>SQLite is a single file. Under concurrent writes — which is exactly what happens when several workflows fire at once — it can corrupt. It also does not handle n8n's execution-pruning well once you have tens of thousands of rows.</p>
+<p>Use <strong>PostgreSQL</strong>. It is one extra container in your Compose file:</p>
+<pre><code class="language-yaml">services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: n8n
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: n8n
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [&quot;CMD-SHELL&quot;, &quot;pg_isready -U n8n&quot;]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: unless-stopped
+    ports:
+      - &quot;127.0.0.1:5678:5678&quot;
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_DATABASE=n8n
+      - DB_POSTGRESDB_USER=n8n
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      - N8N_HOST=${DOMAIN}
+      - N8N_PROTOCOL=https
+      - WEBHOOK_URL=https://${DOMAIN}/
+      - GENERIC_TIMEZONE=Asia/Kolkata
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+    volumes:
+      - n8n_data:/home/node/.n8n
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  n8n_data:</code></pre>
+<p>Two things in there that matter more than they look:</p>
+<p><strong><code>ports: "127.0.0.1:5678:5678"</code></strong> binds n8n to localhost only. Without the <code>127.0.0.1:</code> prefix, Docker publishes the port to the world and <strong>bypasses UFW entirely</strong> — your n8n instance is on the public internet with no auth in front of it. This catches a lot of people.</p>
+<p><strong><code>N8N_ENCRYPTION_KEY</code></strong> encrypts your stored credentials. If you do not set it, n8n generates one and stores it in the data volume. Lose the volume, lose every saved credential. Set it explicitly and keep it in your password manager.</p>
+<h2 id="setup">Setup</h2>
+<h3 id="1-get-a-vps">1. Get a VPS</h3>
+<p>Pick a plan with at least 4GB RAM. Location matters for webhook latency — choose a region near you or near the services you integrate with.</p>
+<h3 id="2-point-a-domain-at-it">2. Point a domain at it</h3>
+<p>You need HTTPS for webhooks. Most third-party services refuse to send webhooks to plain HTTP, and some refuse self-signed certificates too.</p>
+<p>Add an A record for <code>n8n.yourdomain.com</code> pointing at the VPS IP.</p>
+<h3 id="3-install-docker">3. Install Docker</h3>
+<pre><code class="language-bash">curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker $USER
+newgrp docker</code></pre>
+<h3 id="4-reverse-proxy-tls">4. Reverse proxy + TLS</h3>
+<p>Caddy is the shortest path — it handles certificates automatically:</p>
+<pre><code class="language-bash">sudo apt install -y caddy</code></pre>
+<p><code>/etc/caddy/Caddyfile</code>:</p>
+<pre><code class="language-text">n8n.yourdomain.com {
+    reverse_proxy 127.0.0.1:5678
+}</code></pre>
+<pre><code class="language-bash">sudo systemctl reload caddy</code></pre>
+<p>That is the whole TLS setup. Caddy requests the certificate on first request and renews it automatically.</p>
+<h3 id="5-firewall">5. Firewall</h3>
+<pre><code class="language-bash">sudo ufw allow OpenSSH
+sudo ufw allow 80,443/tcp
+sudo ufw enable</code></pre>
+<p>Note there is no rule for 5678 — it should not be reachable from outside. If you skipped the <code>127.0.0.1:</code> bind above, add <code>sudo ufw deny 5678/tcp</code> as well, but fixing the bind is the correct solution.</p>
+<h3 id="6-start-it">6. Start it</h3>
+<pre><code class="language-bash">docker compose up -d
+docker compose logs -f n8n</code></pre>
+<h2 id="the-backup-nobody-sets-up-until-it-is-too-late">The backup nobody sets up until it is too late</h2>
+<p>Self-hosting means backups are your problem. A single cron job covers it:</p>
+<pre><code class="language-bash">#!/bin/bash
+# /root/backup-n8n.sh
+set -euo pipefail
+BACKUP_DIR=/root/n8n-backups
+mkdir -p &quot;$BACKUP_DIR&quot;
+STAMP=$(date +%Y%m%d)
+
+docker compose -f /root/n8n/docker-compose.yml exec -T postgres \
+  pg_dump -U n8n n8n | gzip &gt; &quot;$BACKUP_DIR/n8n-$STAMP.sql.gz&quot;
+
+# keep 14 days
+find &quot;$BACKUP_DIR&quot; -name &#x27;n8n-*.sql.gz&#x27; -mtime +14 -delete</code></pre>
+<pre><code class="language-bash">chmod +x /root/backup-n8n.sh
+(crontab -l 2&gt;/dev/null; echo &quot;0 3 * * * /root/backup-n8n.sh&quot;) | crontab -</code></pre>
+<p>Then copy those off the server. A backup that lives only on the machine it is backing up is not a backup.</p>
+<h2 id="what-about-the-free-options">What about the free options?</h2>
+<p><strong>Oracle Cloud Always Free</strong> gives you an ARM instance with 24GB RAM. It is a genuinely remarkable free tier and n8n runs fine on ARM. The catch: account approval is inconsistent, and Oracle has been known to reclaim idle free-tier instances. Fine for experimenting, risky for anything you depend on.</p>
+<p><strong>Raspberry Pi at home.</strong> Works. But now your automation uptime is tied to your home internet, your power supply, and your dynamic IP. You will spend more time maintaining it than the $7/month you saved is worth.</p>
+<p><strong>Free-tier PaaS (Render, Railway, Fly.io).</strong> These sleep on inactivity, which breaks scheduled workflows and delays webhooks. Their paid tiers cost more than a VPS.</p>
+<p>The honest summary: free options are good for learning n8n. They are a bad idea for automations that other things depend on.</p>
+<h2 id="when-self-hosting-is-the-wrong-choice">When self-hosting is the wrong choice</h2>
+<p>I would rather you not waste a weekend, so:</p>
+<ul><li><strong>You run 1-3 simple workflows.</strong> n8n Cloud's free tier or Starter is fine.</li></ul>
+<p>  The time you spend on server maintenance is worth more than $24.</p>
+<ul><li><strong>You do not want to think about Linux.</strong> Updates, TLS renewal, disk space,</li></ul>
+<p>  backups — it is not much work, but it is never zero.</p>
+<ul><li><strong>You need enterprise SSO, SOC2, or an SLA.</strong> That is what n8n Cloud sells.</li></ul>
+<p>Self-hosting makes sense at roughly <strong>5+ active workflows</strong>, or when your data genuinely cannot leave your infrastructure, or when you want to run other services on the same box anyway. That last one is the real argument: a VPS running n8n has plenty of spare capacity for whatever else you need.</p>
+<h2 id="faq">FAQ</h2>
+<h3 id="how-much-does-self-hosted-n8n-cost-per-month">How much does self-hosted n8n cost per month?</h3>
+<p>Around $7-13/month for a VPS with 4-8GB RAM, which is enough for most setups. The n8n software itself is free under the Sustainable Use License. Your only other likely cost is a domain, roughly $10-15/year.</p>
+<h3 id="is-self-hosting-n8n-free">Is self-hosting n8n free?</h3>
+<p>The software is free, the hosting is not. You can get to genuinely $0 using Oracle Cloud's free tier or a Raspberry Pi you already own, but both trade reliability for cost. Realistically, budget $7-13/month.</p>
+<h3 id="how-much-ram-does-n8n-need">How much RAM does n8n need?</h3>
+<p>4GB is the practical minimum for a real setup running n8n plus PostgreSQL. n8n's docs mention 512MB, but that only covers an idle instance. Workflows that handle large payloads will exceed it and get killed by the OOM killer.</p>
+<h3 id="should-i-use-sqlite-or-postgresql-for-n8n">Should I use SQLite or PostgreSQL for n8n?</h3>
+<p>PostgreSQL. SQLite is the default and works for light use, but it is prone to corruption under concurrent workflow executions and handles large execution tables poorly. Postgres is one extra container and removes an entire category of problem.</p>
+<h3 id="can-i-run-n8n-without-docker">Can I run n8n without Docker?</h3>
+<p>Yes, via npm (<code>npm install n8n -g</code>), but you then manage Node versions, process supervision, and dependency conflicts yourself. Docker is less work and makes upgrades a single command.</p>
+<h3 id="is-self-hosted-n8n-slower-than-n8n-cloud">Is self-hosted n8n slower than n8n Cloud?</h3>
+<p>No, usually the opposite — a dedicated VPS is not shared with other tenants. What you lose is n8n Cloud's managed scaling and their handling of very high webhook concurrency, which most self-hosted users never approach.</p><div class="cta">
+<h4>The VPS I actually run this on</h4>
+<p>I run my n8n instance on a KVM 2 VPS. The one-click n8n template meant I skipped the whole Docker Compose setup.</p>
+<a class="btn" href="https://www.hostinger.com/in?REFERRALCODE=BPKTAARUSPTH" rel="sponsored nofollow noopener" target="_blank">Check current VPS pricing &rarr;</a>
+</div><div class="author-box"><div>
+<div class="who">Taarush Kane</div>
+<p>I run TKVibes, a digital agency. I self-host the automation stack that runs it — n8n, AI agents, and a pile of Docker containers. These are my notes.</p>
+</div></div><p class="disclosure">Some links on this page are affiliate links. If you buy through them I earn a commission at no extra cost to you. I pay for the services I write about and only recommend what I actually use.</p></article>
+</main>
+<footer class="site-foot"><div class="wrap">
+  <p>TKVibes Blog — by <a href="https://tkvibes.in">Taarush Kane</a>.
+  <a href="/feed.xml">RSS</a></p>
+  <p style="font-size:13px">Some links on this page are affiliate links. If you buy through them I earn a commission at no extra cost to you. I pay for the services I write about and only recommend what I actually use.</p>
+</div></footer>
+</body>
+</html>
