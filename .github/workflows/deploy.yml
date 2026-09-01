@@ -37,9 +37,11 @@ jobs:
           MON=$(date -u -d '+2 minutes' +%-m)
           CRON_TIME="$MIN $HR $DAY $MON *"
 
-          # Clone on first run, fast-forward after. Must stay under the
-          # 255-char post-escape command limit.
-          CMD="cd $DOCROOT && (git pull -q origin main || (git init -q && git remote add origin $REPO; git fetch -q --depth 1 origin main && git reset --hard origin/main)) && echo DEPLOYED"
+          # Fetch pull.sh from the repo and run it. Keeping the real logic in a
+          # script file is what keeps this command under the 255-char API limit
+          # (the API counts length AFTER escaping spaces and slashes).
+          RAW="https://raw.githubusercontent.com/${{ github.repository }}/main/pull.sh"
+          CMD="cd $DOCROOT && wget -qO /tmp/p.sh $RAW && sh /tmp/p.sh"
 
           echo "Command length: ${#CMD}"
           if [ ${#CMD} -gt 245 ]; then
